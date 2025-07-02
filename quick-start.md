@@ -10,94 +10,122 @@ RAGForge 是一个强大的企业级 AI 知识库解决方案，基于 RAG（Ret
 
 确保您的系统满足以下要求：
 
-- Node.js 18.0 或更高版本
-- npm 或 yarn 包管理器
+- Python 3.8 或更高版本
+- Node.js 18.0 或更高版本（用于前端）
+- Docker 和 Docker Compose
 - 现代浏览器（Chrome、Firefox、Safari、Edge）
 
-### 2. 安装 RAGForge
+### 2. 克隆项目
 
 ```bash
-# 使用 npm 安装
-npm install ragforge
+# 克隆 RAGForge 项目
+git clone https://github.com/zhaozhilong1993/ragflow.git
+cd ragflow
 
-# 或使用 yarn 安装
-yarn add ragforge
+# 更新子模块
+git submodule update --init --recursive
 ```
 
-### 3. 初始化项目
+### 3. 后端配置
 
 ```bash
-# 创建新的 RAGForge 项目
-npx ragforge init my-knowledge-base
+# 安装 Python 依赖
+pip install -r requirements.txt
 
-# 进入项目目录
-cd my-knowledge-base
+# 配置环境变量
+cp .env.example .env
+# 编辑 .env 文件配置数据库等信息
 ```
 
-### 4. 配置环境变量
+### 4. 前端配置
 
-创建 `.env` 文件并配置必要的环境变量：
+```bash
+# 进入前端目录
+cd web
 
-```env
-# 数据库配置
-DATABASE_URL=your_database_url
+# 安装依赖
+npm install
 
-# API 密钥
-API_KEY=your_api_key
-
-# 向量数据库配置
-VECTOR_DB_URL=your_vector_db_url
+# 启动开发服务器
+npm run dev
 ```
 
 ### 5. 启动服务
 
 ```bash
-# 启动开发服务器
-npm run dev
+# 启动后端服务
+python -m uvicorn app.main:app --reload
 
-# 或启动生产服务器
-npm start
+# 前端服务已在另一个终端启动
 ```
 
 ## 创建第一个知识库
 
-### 1. 上传文档
+### 1. 访问系统
 
-通过 Web 界面或 API 上传您的文档：
+打开浏览器访问 `http://localhost:3000`，使用默认账号登录系统。
 
-```javascript
-import { RAGForge } from 'ragforge';
+### 2. 创建知识库
 
-const client = new RAGForge({
-  apiKey: 'your_api_key'
-});
+1. 点击"知识库管理"
+2. 点击"新建知识库"
+3. 填写知识库名称和描述
+4. 选择文档处理方式
 
-// 上传文档
-await client.uploadDocument({
-  file: documentFile,
-  knowledgeBaseId: 'your_kb_id'
-});
+### 3. 上传文档
+
+1. 在知识库详情页面点击"上传文档"
+2. 选择要上传的文档文件
+3. 系统会自动解析和处理文档
+
+### 4. 进行问答
+
+1. 点击"智能问答"
+2. 在对话框中输入您的问题
+3. 系统会基于知识库内容给出准确答案
+
+## API 使用示例
+
+### 1. 认证
+
+```python
+import requests
+
+# 获取访问令牌
+response = requests.post('http://localhost:8000/api/auth/login', json={
+    'username': 'your_username',
+    'password': 'your_password'
+})
+
+token = response.json()['access_token']
+headers = {'Authorization': f'Bearer {token}'}
 ```
 
-### 2. 训练知识库
+### 2. 上传文档
 
-```javascript
-// 开始训练
-await client.trainKnowledgeBase({
-  knowledgeBaseId: 'your_kb_id'
-});
+```python
+# 上传文档到知识库
+with open('document.pdf', 'rb') as f:
+    files = {'file': f}
+    data = {'knowledge_base_id': 'your_kb_id'}
+    response = requests.post(
+        'http://localhost:8000/api/knowledge/upload',
+        files=files,
+        data=data,
+        headers=headers
+    )
 ```
 
-### 3. 进行问答
+### 3. 问答
 
-```javascript
-// 提问
-const response = await client.ask({
-  question: '您的问题',
-  knowledgeBaseId: 'your_kb_id'
-});
+```python
+# 进行问答
+response = requests.post('http://localhost:8000/api/chat/ask', json={
+    'question': '您的问题',
+    'knowledge_base_id': 'your_kb_id'
+}, headers=headers)
 
-console.log(response.answer);
+answer = response.json()['answer']
 ```
 
 ## 下一步
@@ -115,4 +143,7 @@ A: RAGForge 支持 PDF、Word、Excel、PowerPoint、TXT、Markdown 等多种格
 A: 系统会自动分块处理大文件，确保处理效率和准确性。
 
 ### Q: 是否支持多语言？
-A: 是的，RAGForge 支持中文、英文等多种语言的文档和问答。 
+A: 是的，RAGForge 支持中文、英文等多种语言的文档和问答。
+
+### Q: 如何配置数据库？
+A: 系统默认使用 SQLite，生产环境建议使用 PostgreSQL。详细配置请参考部署文档。 

@@ -34,8 +34,8 @@ RAGForge 是一个基于 RAG（Retrieval-Augmented Generation）技术构建的�
 
 RAGForge 采用现代化的微服务架构，基于开源技术栈构建：
 
-- **前端**: React + TypeScript + Tailwind CSS
-- **后端**: Node.js + Express + TypeScript
+- **前端**: React + TypeScript + Ant Design
+- **后端**: Python + FastAPI
 - **数据库**: PostgreSQL + Redis
 - **向量数据库**: Milvus / Weaviate
 - **AI 模型**: OpenAI GPT / 开源大模型

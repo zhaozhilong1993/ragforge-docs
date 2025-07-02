@@ -16,7 +16,28 @@
 
 ## 环境准备
 
-### 1. 安装 Docker
+### 1. 安装 Python 3.8+
+```bash
+# Ubuntu/Debian
+sudo apt update
+sudo apt install python3 python3-pip python3-venv
+
+# CentOS/RHEL
+sudo yum install python3 python3-pip
+
+# macOS
+brew install python3
+```
+
+### 2. 安装 Node.js 18+
+```bash
+# 使用 nvm 安装
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+nvm install 18
+nvm use 18
+```
+
+### 3. 安装 Docker（可选）
 ```bash
 # Ubuntu/Debian
 curl -fsSL https://get.docker.com -o get-docker.sh
@@ -32,33 +53,75 @@ sudo systemctl start docker
 sudo systemctl enable docker
 ```
 
-### 2. 安装 Docker Compose
+## 开发环境部署
+
+### 1. 克隆项目
 ```bash
-sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+git clone https://github.com/zhaozhilong1993/ragflow.git
+cd ragflow
+
+# 更新子模块
+git submodule update --init --recursive
 ```
 
-## 快速部署
-
-### 1. 下载安装包
+### 2. 后端配置
 ```bash
-git clone https://github.com/ragforge/ragforge.git
-cd ragforge
-```
+# 创建虚拟环境
+python3 -m venv venv
+source venv/bin/activate  # Linux/macOS
+# 或 venv\Scripts\activate  # Windows
 
-### 2. 配置环境变量
-```bash
+# 安装依赖
+pip install -r requirements.txt
+
+# 配置环境变量
 cp .env.example .env
 # 编辑 .env 文件，配置数据库、API密钥等
 ```
 
-### 3. 启动服务
+### 3. 前端配置
 ```bash
-docker-compose up -d
+# 进入前端目录
+cd web
+
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm run dev
 ```
 
-### 4. 验证安装
+### 4. 启动后端服务
+```bash
+# 在项目根目录
+python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+### 5. 验证安装
 访问 http://localhost:3000 查看管理界面
+
+## 生产环境部署
+
+### 1. 使用 Docker Compose
+```bash
+# 使用生产环境配置
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+### 2. 使用 Docker Swarm
+```bash
+# 初始化 Swarm
+docker swarm init
+
+# 部署服务
+docker stack deploy -c docker-compose.prod.yml ragforge
+```
+
+### 3. 使用 Kubernetes
+```bash
+# 应用 Kubernetes 配置
+kubectl apply -f k8s/
+```
 
 ## 配置说明
 
@@ -88,28 +151,14 @@ VECTOR_DB_HOST=localhost
 VECTOR_DB_PORT=19530
 ```
 
-## 生产环境部署
-
-### 1. 使用 Docker Swarm
-```bash
-# 初始化 Swarm
-docker swarm init
-
-# 部署服务
-docker stack deploy -c docker-compose.prod.yml ragforge
-```
-
-### 2. 使用 Kubernetes
-```bash
-# 应用 Kubernetes 配置
-kubectl apply -f k8s/
-```
-
 ## 监控和维护
 
 ### 1. 日志查看
 ```bash
-# 查看服务日志
+# 开发环境查看日志
+tail -f logs/app.log
+
+# Docker 环境查看日志
 docker-compose logs -f
 
 # 查看特定服务日志
@@ -134,18 +183,22 @@ tar -czf files_backup.tar.gz ./uploads/
 ### 常见问题
 
 1. **端口冲突**
-   - 检查 3000、5432、6379 端口是否被占用
-   - 修改 docker-compose.yml 中的端口映射
+   - 检查 3000、8000、5432、6379 端口是否被占用
+   - 修改配置文件中的端口设置
 
 2. **内存不足**
    - 增加系统内存
-   - 调整 Docker 内存限制
+   - 调整 Python 和 Node.js 内存限制
 
 3. **磁盘空间不足**
-   - 清理 Docker 镜像和容器
+   - 清理临时文件和日志
    - 扩展磁盘空间
 
+4. **依赖安装失败**
+   - 检查 Python 和 Node.js 版本
+   - 使用国内镜像源加速下载
+
 ### 获取帮助
-- 查看日志: `docker-compose logs`
+- 查看日志: `tail -f logs/app.log`
 - 技术支持: support@ragforge.com
 - 社区论坛: [forum.ragforge.com](https://forum.ragforge.com) 
