@@ -1,5 +1,18 @@
 # 知识库 API
 
+RAGForge 后台启动后，可通过访问 [http://localhost:9380/apidocs](http://localhost:9380/apidocs) 查看所有可用 API 接口的详细文档和在线调试。
+
+## 示例：创建知识库
+
+    POST /knowledge-bases
+
+请求体示例：
+
+    {
+      "name": "企业文档库",
+      "description": "存储企业重要文档"
+    }
+
 ## 概述
 
 RAGForge 知识库 API 提供了完整的知识库管理功能，包括创建、配置、文档管理和训练等操作。

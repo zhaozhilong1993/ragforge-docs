@@ -1,4 +1,14 @@
-# API 参考文档
+# API 总览
+
+RAGForge 后台启动后，可通过访问 [http://localhost:9380/apidocs](http://localhost:9380/apidocs) 查看所有可用 API 接口的详细文档和在线调试。
+
+## 示例：获取知识库列表
+
+    GET /knowledge-bases
+
+请求示例：
+
+    curl -H "Authorization: Bearer <your_api_key>" http://localhost:9380/api/knowledge-bases
 
 ## 概述
 

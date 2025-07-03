@@ -1,5 +1,18 @@
 # 问答 API
 
+RAGForge 后台启动后，可通过访问 [http://localhost:9380/apidocs](http://localhost:9380/apidocs) 查看所有可用 API 接口的详细文档和在线调试。
+
+## 示例：提交问答请求
+
+    POST /qa/ask
+
+请求体示例：
+
+    {
+      "question": "RAGForge 有哪些功能？",
+      "knowledgeBaseId": "kb_123456789"
+    }
+
 ## 概述
 
 RAGForge 问答 API 提供了强大的智能问答功能，支持基于知识库的准确回答生成。
