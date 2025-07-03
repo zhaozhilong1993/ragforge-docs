@@ -11,7 +11,7 @@ Create a step-retrieval strategy using page rank.
 
 ## Scenario
 
-In an AI-powered chat, you can configure a chat assistant or an agent to respond using knowledge retrieved from multiple specified knowledge bases (datasets), provided that they employ the same embedding model. In situations where you prefer information from certain knowledge base(s) to take precedence or to be retrieved first, you can use RAGFlow's page rank feature to increase the ranking of chunks from these knowledge bases. For example, if you have configured a chat assistant to draw from two knowledge bases, knowledge base A for 2024 news and knowledge base B for 2023 news, but wish to prioritize news from year 2024, this feature is particularly useful.
+In an AI-powered chat, you can configure a chat assistant or an agent to respond using knowledge retrieved from multiple specified knowledge bases (datasets), provided that they employ the same embedding model. In situations where you prefer information from certain knowledge base(s) to take precedence or to be retrieved first, you can use RAGForge's page rank feature to increase the ranking of chunks from these knowledge bases. For example, if you have configured a chat assistant to draw from two knowledge bases, knowledge base A for 2024 news and knowledge base B for 2023 news, but wish to prioritize news from year 2024, this feature is particularly useful.
 
 :::info NOTE
 It is important to note that this 'page rank' feature operates at the level of the entire knowledge base rather than on individual files or documents.

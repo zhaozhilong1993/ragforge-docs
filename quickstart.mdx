@@ -8,19 +8,19 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import APITable from '@site/src/components/APITable';
 
-RAGFlow 是一个基于深度文档理解的开源 RAG（检索增强生成）引擎。当与 LLM 集成时，它能够提供基于各种复杂格式数据的有理有据的问答能力。
+RAGForge 是一个基于深度文档理解的开源 RAG（检索增强生成）引擎。当与 LLM 集成时，它能够提供基于各种复杂格式数据的有理有据的问答能力。
 
 本快速开始指南描述了从以下步骤的一般流程：
 
-- 启动本地 RAGFlow 服务器
+- 启动本地 RAGForge 服务器
 - 创建知识库
 - 干预文件解析
 - 基于您的数据集建立 AI 聊天
 
 :::danger 重要提示
-我们官方支持 x86 CPU 和 Nvidia GPU，本文档提供了在 x86 平台上使用 Docker 部署 RAGFlow 的说明。虽然我们也在 ARM64 平台上测试 RAGFlow，但我们不维护 ARM 的 RAGFlow Docker 镜像。
+我们官方支持 x86 CPU 和 Nvidia GPU，本文档提供了在 x86 平台上使用 Docker 部署 RAGForge 的说明。虽然我们也在 ARM64 平台上测试 RAGForge，但我们不维护 ARM 的 RAGForge Docker 镜像。
 
-如果您在 ARM 平台上，请按照[此指南](./develop/build_docker_image.mdx)构建 RAGFlow Docker 镜像。
+如果您在 ARM 平台上，请按照[此指南](./develop/build_docker_image.mdx)构建 RAGForge Docker 镜像。
 :::
 
 ## 前置要求
@@ -32,14 +32,14 @@ RAGFlow 是一个基于深度文档理解的开源 RAG（检索增强生成）�
 
 ## 启动服务器
 
-本节提供在 Linux 上设置 RAGFlow 服务器的说明。如果您使用不同的操作系统，不用担心。大多数步骤都是相似的。
+本节提供在 Linux 上设置 RAGForge 服务器的说明。如果您使用不同的操作系统，不用担心。大多数步骤都是相似的。
 
 <details>
   <summary>1. 确保 <code>vm.max_map_count</code> ≥ 262144：</summary>
 
    `vm.max_map_count`。此值设置进程可能拥有的内存映射区域的最大数量。其默认值为 65530。虽然大多数应用程序需要少于一千个映射，但减少此值可能导致异常行为，当进程达到限制时，系统将抛出内存不足错误。
 
-   RAGFlow v0.18.0 使用 Elasticsearch 或 [Infinity](https://github.com/infiniflow/infinity) 进行多重召回。正确设置 `vm.max_map_count` 的值对于 Elasticsearch 组件的正常运行至关重要。
+   RAGForge v0.18.0 使用 Elasticsearch 或 [Infinity](https://github.com/infiniflow/infinity) 进行多重召回。正确设置 `vm.max_map_count` 的值对于 Elasticsearch 组件的正常运行至关重要。
 
 <Tabs
   defaultValue="linux"
@@ -177,15 +177,15 @@ RAGFlow 是一个基于深度文档理解的开源 RAG（检索增强生成）�
 2. 克隆仓库：
 
    ```bash
-   $ git clone https://github.com/infiniflow/ragflow.git
-   $ cd ragflow/docker
+   $ git clone https://github.com/infiniflow/ragforge.git
+   $ cd ragforge/docker
    $ git checkout -f v0.18.0
    ```
 
 3. 使用预构建的 Docker 镜像并启动服务器：
 
    :::tip 注意
-   下面的命令下载 RAGFlow Docker 镜像的 `v0.18.0-slim` 版本。请参考下表了解不同 RAGFlow 版本的描述。要下载与 `v0.18.0-slim` 不同的 RAGFlow 版本，请在使用 `docker compose` 启动服务器之前在 **docker/.env** 中相应地更新 `RAGFLOW_IMAGE` 变量。例如：为完整版本 `v0.18.0` 设置 `RAGFLOW_IMAGE=infiniflow/ragflow:v0.18.0`。
+   下面的命令下载 RAGForge Docker 镜像的 `v0.18.0-slim` 版本。请参考下表了解不同 RAGForge 版本的描述。要下载与 `v0.18.0-slim` 不同的 RAGForge 版本，请在使用 `docker compose` 启动服务器之前在 **docker/.env** 中相应地更新 `RAGFORGE_IMAGE` 变量。例如：为完整版本 `v0.18.0` 设置 `RAGFORGE_IMAGE=infiniflow/ragforge:v0.18.0`。
    :::
 
    ```bash
@@ -200,7 +200,7 @@ RAGFlow 是一个基于深度文档理解的开源 RAG（检索增强生成）�
 <APITable>
 ```
 
-| RAGFlow image tag   | Image size (GB) | Has embedding models and Python packages? | Stable?                  |
+| RAGForge image tag   | Image size (GB) | Has embedding models and Python packages? | Stable?                  |
 | ------------------- | --------------- | ----------------------------------------- | ------------------------ |
 | `v0.18.0`           | &approx;9       | :heavy_check_mark:                        | Stable release           |
 | `v0.18.0-slim`      | &approx;2       | ❌                                        | Stable release           |
@@ -214,7 +214,7 @@ RAGFlow 是一个基于深度文档理解的开源 RAG（检索增强生成）�
 4. Check the server status after having the server up and running:
 
    ```bash
-   $ docker logs -f ragflow-server
+   $ docker logs -f ragforge-server
    ```
 
    _The following output confirms a successful launch of the system:_
@@ -229,9 +229,9 @@ RAGFlow 是一个基于深度文档理解的开源 RAG（检索增强生成）�
     * Running on all addresses (0.0.0.0)
    ```
 
-   > If you skip this confirmation step and directly log in to RAGFlow, your browser may prompt a `network anomaly` error because, at that moment, your RAGFlow may not be fully initialized.  
+   > If you skip this confirmation step and directly log in to RAGForge, your browser may prompt a `network anomaly` error because, at that moment, your RAGForge may not be fully initialized.  
 
-5. In your web browser, enter the IP address of your server and log in to RAGFlow.
+5. In your web browser, enter the IP address of your server and log in to RAGForge.
 
 :::caution WARNING
 With the default settings, you only need to enter `http://IP_OF_YOUR_MACHINE` (**sans** port number) as the default HTTP serving port `80` can be omitted when using the default configurations.
@@ -239,27 +239,27 @@ With the default settings, you only need to enter `http://IP_OF_YOUR_MACHINE` (*
 
 ## Configure LLMs
 
-RAGFlow is a RAG engine and needs to work with an LLM to offer grounded, hallucination-free question-answering capabilities. RAGFlow supports most mainstream LLMs. For a complete list of supported models, please refer to [Supported Models](./references/supported_models.mdx).
+RAGForge is a RAG engine and needs to work with an LLM to offer grounded, hallucination-free question-answering capabilities. RAGForge supports most mainstream LLMs. For a complete list of supported models, please refer to [Supported Models](./references/supported_models.mdx).
 
 :::note 
-RAGFlow also supports deploying LLMs locally using Ollama, Xinference, or LocalAI, but this part is not covered in this quick start guide. 
+RAGForge also supports deploying LLMs locally using Ollama, Xinference, or LocalAI, but this part is not covered in this quick start guide. 
 :::
 
 To add and configure an LLM: 
 
 1. Click on your logo on the top right of the page **>** **Model providers**:
 
-   ![add llm](https://github.com/infiniflow/ragflow/assets/93570324/10635088-028b-4b3d-add9-5c5a6e626814)
+   ![add llm](https://github.com/infiniflow/ragforge/assets/93570324/10635088-028b-4b3d-add9-5c5a6e626814)
 
-   > Each RAGFlow account is able to use **text-embedding-v2** for free, an embedding model of Tongyi-Qianwen. This is why you can see Tongyi-Qianwen in the **Added models** list. And you may need to update your Tongyi-Qianwen API key at a later point.
+   > Each RAGForge account is able to use **text-embedding-v2** for free, an embedding model of Tongyi-Qianwen. This is why you can see Tongyi-Qianwen in the **Added models** list. And you may need to update your Tongyi-Qianwen API key at a later point.
 
 2. Click on the desired LLM and update the API key accordingly (DeepSeek-V2 in this case):
 
-   ![update api key](https://github.com/infiniflow/ragflow/assets/93570324/4e5e13ef-a98d-42e6-bcb1-0c6045fc1666)
+   ![update api key](https://github.com/infiniflow/ragforge/assets/93570324/4e5e13ef-a98d-42e6-bcb1-0c6045fc1666)
 
    *Your added models appear as follows:* 
 
-   ![added available models](https://github.com/infiniflow/ragflow/assets/93570324/d08b80e4-f921-480a-b41d-11832489c916)
+   ![added available models](https://github.com/infiniflow/ragforge/assets/93570324/d08b80e4-f921-480a-b41d-11832489c916)
 
 3. Click **System Model Settings** to select the default models: 
 
@@ -267,13 +267,13 @@ To add and configure an LLM:
    - Embedding model, 
    - Image-to-text model. 
 
-   ![system model settings](https://github.com/infiniflow/ragflow/assets/93570324/cdcc1da5-4494-44cd-ad5b-1222ed6acc3f)
+   ![system model settings](https://github.com/infiniflow/ragforge/assets/93570324/cdcc1da5-4494-44cd-ad5b-1222ed6acc3f)
 
 > Some models, such as the image-to-text model **qwen-vl-max**, are subsidiary to a specific LLM. And you may need to update your API key to access these models. 
 
 ## Create your first knowledge base
 
-You are allowed to upload files to a knowledge base in RAGFlow and parse them into datasets. A knowledge base is virtually a collection of datasets. Question answering in RAGFlow can be based on a particular knowledge base or multiple knowledge bases. File formats that RAGFlow supports include documents (PDF, DOC, DOCX, TXT, MD), tables (CSV, XLSX, XLS), pictures (JPEG, JPG, PNG, TIF, GIF), and slides (PPT, PPTX).
+You are allowed to upload files to a knowledge base in RAGForge and parse them into datasets. A knowledge base is virtually a collection of datasets. Question answering in RAGForge can be based on a particular knowledge base or multiple knowledge bases. File formats that RAGForge supports include documents (PDF, DOC, DOCX, TXT, MD), tables (CSV, XLSX, XLS), pictures (JPEG, JPG, PNG, TIF, GIF), and slides (PPT, PPTX).
 
 To create your first knowledge base:
 
@@ -283,9 +283,9 @@ To create your first knowledge base:
 
    _You are taken to the **Configuration** page of your knowledge base._
 
-   ![knowledge base configuration](https://github.com/infiniflow/ragflow/assets/93570324/384c671a-8b9c-468c-b1c9-1401128a9b65)
+   ![knowledge base configuration](https://github.com/infiniflow/ragforge/assets/93570324/384c671a-8b9c-468c-b1c9-1401128a9b65)
 
-3. RAGFlow offers multiple chunk templates that cater to different document layouts and file formats. Select the embedding model and chunk method (template) for your knowledge base. 
+3. RAGForge offers multiple chunk templates that cater to different document layouts and file formats. Select the embedding model and chunk method (template) for your knowledge base. 
 
 :::danger IMPORTANT 
 Once you have selected an embedding model and used it to parse a file, you are no longer allowed to change it. The obvious reason is that we must ensure that all files in a specific knowledge base are parsed using the *same* embedding model (ensure that they are being compared in the same embedding space). 
@@ -297,7 +297,7 @@ Once you have selected an embedding model and used it to parse a file, you are n
 
 5. In the uploaded file entry, click the play button to start file parsing:
 
-   ![file parsing](https://github.com/infiniflow/ragflow/assets/93570324/19f273fa-0ab0-435e-bdf4-a47fb080a078)
+   ![file parsing](https://github.com/infiniflow/ragforge/assets/93570324/19f273fa-0ab0-435e-bdf4-a47fb080a078)
 
    _When the file parsing completes, its parsing status changes to **SUCCESS**._
 
@@ -308,19 +308,19 @@ Once you have selected an embedding model and used it to parse a file, you are n
 
 ## Intervene with file parsing
 
-RAGFlow features visibility and explainability, allowing you to view the chunking results and intervene where necessary. To do so:
+RAGForge features visibility and explainability, allowing you to view the chunking results and intervene where necessary. To do so:
 
 1. Click on the file that completes file parsing to view the chunking results:
 
    _You are taken to the **Chunk** page:_
 
-   ![chunks](https://github.com/infiniflow/ragflow/assets/93570324/0547fd0e-e71b-41f8-8e0e-31649c85fd3d)
+   ![chunks](https://github.com/infiniflow/ragforge/assets/93570324/0547fd0e-e71b-41f8-8e0e-31649c85fd3d)
 
 2. Hover over each snapshot for a quick view of each chunk.
 
 3. Double click the chunked texts to add keywords or make *manual* changes where necessary:
 
-   ![update chunk](https://github.com/infiniflow/ragflow/assets/93570324/1d84b408-4e9f-46fd-9413-8c1059bf9c76)
+   ![update chunk](https://github.com/infiniflow/ragforge/assets/93570324/1d84b408-4e9f-46fd-9413-8c1059bf9c76)
 
 :::caution NOTE
 You can add keywords to a file chunk to improve its ranking for queries containing those keywords. This action increases its keyword weight and can improve its position in search list.
@@ -328,23 +328,23 @@ You can add keywords to a file chunk to improve its ranking for queries containi
 
 4. In Retrieval testing, ask a quick question in **Test text** to double check if your configurations work:
 
-   _As you can tell from the following, RAGFlow responds with truthful citations._
+   _As you can tell from the following, RAGForge responds with truthful citations._
 
-   ![retrieval test](https://github.com/infiniflow/ragflow/assets/93570324/c03f06f6-f41f-4b20-a97e-ae405d3a950c)
+   ![retrieval test](https://github.com/infiniflow/ragforge/assets/93570324/c03f06f6-f41f-4b20-a97e-ae405d3a950c)
 
 ## Set up an AI chat
 
-Conversations in RAGFlow are based on a particular knowledge base or multiple knowledge bases. Once you have created your knowledge base and finished file parsing, you can go ahead and start an AI conversation.
+Conversations in RAGForge are based on a particular knowledge base or multiple knowledge bases. Once you have created your knowledge base and finished file parsing, you can go ahead and start an AI conversation.
 
 1. Click the **Chat** tab in the middle top of the mage **>** **Create an assistant** to show the **Chat Configuration** dialogue *of your next dialogue*.
-   > RAGFlow offer the flexibility of choosing a different chat model for each dialogue, while allowing you to set the default models in **System Model Settings**.
+   > RAGForge offer the flexibility of choosing a different chat model for each dialogue, while allowing you to set the default models in **System Model Settings**.
 
 2. Update **Assistant settings**:
 
    - Name your assistant and specify your knowledge bases.
    - **Empty response**:
-     - If you wish to *confine* RAGFlow's answers to your knowledge bases, leave a response here. Then when it doesn't retrieve an answer, it *uniformly* responds with what you set here.
-     - If you wish RAGFlow to *improvise* when it doesn't retrieve an answer from your knowledge bases, leave it blank, which may give rise to hallucinations.
+     - If you wish to *confine* RAGForge's answers to your knowledge bases, leave a response here. Then when it doesn't retrieve an answer, it *uniformly* responds with what you set here.
+     - If you wish RAGForge to *improvise* when it doesn't retrieve an answer from your knowledge bases, leave it blank, which may give rise to hallucinations.
 
 3. Update **Prompt engine** or leave it as is for the beginning.
 
@@ -352,15 +352,15 @@ Conversations in RAGFlow are based on a particular knowledge base or multiple kn
 
 5. Now, let's start the show:
 
-   ![question1](https://github.com/infiniflow/ragflow/assets/93570324/bb72dd67-b35e-4b2a-87e9-4e4edbd6e677)
+   ![question1](https://github.com/infiniflow/ragforge/assets/93570324/bb72dd67-b35e-4b2a-87e9-4e4edbd6e677)
 
-   ![question2](https://github.com/infiniflow/ragflow/assets/93570324/7cc585ae-88d0-4aa2-817d-0370b2ad7230)
+   ![question2](https://github.com/infiniflow/ragforge/assets/93570324/7cc585ae-88d0-4aa2-817d-0370b2ad7230)
 
 
 :::tip NOTE
-RAGFlow also offers HTTP and Python APIs for you to integrate RAGFlow's capabilities into your applications. Read the following documents for more information:
+RAGForge also offers HTTP and Python APIs for you to integrate RAGForge's capabilities into your applications. Read the following documents for more information:
 
-- [Acquire a RAGFlow API key](./develop/acquire_ragflow_api_key.md)
+- [Acquire a RAGForge API key](./develop/acquire_ragforge_api_key.md)
 - [HTTP API reference](./references/http_api_reference.md)
 - [Python API reference](./references/python_api_reference.md)
 :::

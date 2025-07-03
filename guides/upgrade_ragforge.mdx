@@ -1,0 +1,101 @@
+---
+sidebar_position: 11
+slug: /upgrade_ragforge
+---
+
+# Upgrading
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Upgrade RAGForge to `nightly-slim`/`nightly` or the latest, published release.
+
+:::info NOTE
+Upgrading RAGForge in itself will *not* remove your uploaded/historical data. However, be aware that `docker compose -f docker/docker-compose.yml down -v` will remove Docker container volumes, resulting in data loss.
+:::
+
+## Upgrade RAGForge to `nightly-slim`/`nightly`, the most recent, tested Docker image
+
+`nightly-slim` refers to the RAGForge Docker image *without* embedding models, while `nightly` refers to the RAGForge Docker image with embedding models. For details on their differences, see [ragforge/docker/.env](https://github.com/infiniflow/ragforge/blob/main/docker/.env).
+
+To upgrade RAGForge, you must upgrade **both** your code **and** your Docker image:
+
+1. Clone the repo
+
+   ```bash
+   git clone https://github.com/infiniflow/ragforge.git
+   ```
+
+2. Update **ragforge/docker/.env**:
+
+<Tabs
+  defaultValue="nightly-slim"
+  values={[
+    {label: 'nightly-slim', value: 'nightly-slim'},
+    {label: 'nightly', value: 'nightly'},
+  ]}>
+  <TabItem value="nightly-slim">
+
+```bash
+RAGFORGE_IMAGE=infiniflow/ragforge:nightly-slim
+```
+
+  </TabItem>
+  <TabItem value="nightly">
+
+```bash
+RAGFORGE_IMAGE=infiniflow/ragforge:nightly
+```
+
+  </TabItem>
+</Tabs>
+
+3. Update RAGForge image and restart RAGForge:
+
+   ```bash
+   docker compose -f docker/docker-compose.yml pull
+   docker compose -f docker/docker-compose.yml up -d
+   ```
+
+## Upgrade RAGForge to the most recent, officially published release
+
+To upgrade RAGForge, you must upgrade **both** your code **and** your Docker image:
+
+1. Clone the repo
+
+   ```bash
+   git clone https://github.com/infiniflow/ragforge.git
+   ```
+
+2. Switch to the latest, officially published release, e.g., `v0.18.0`:
+
+   ```bash
+   git checkout -f v0.18.0
+   ```
+
+3. Update **ragforge/docker/.env** as follows:
+
+   ```bash
+   RAGFORGE_IMAGE=infiniflow/ragforge:v0.18.0
+   ```
+
+4. Update the RAGForge image and restart RAGForge:
+
+   ```bash
+   docker compose -f docker/docker-compose.yml pull
+   docker compose -f docker/docker-compose.yml up -d
+   ```
+
+## Frequently asked questions
+
+### Upgrade RAGForge in an offline environment (without Internet access)
+
+1. From an environment with Internet access, pull the required Docker image.
+2. Save the Docker image to a **.tar** file.
+   ```bash
+   docker save -o ragforge.v0.18.0.tar infiniflow/ragforge:v0.18.0
+   ```
+3. Copy the **.tar** file to the target server.
+4. Load the **.tar** file into Docker:
+   ```bash
+   docker load -i ragforge.v0.18.0.tar
+   ```

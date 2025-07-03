@@ -1,11 +1,11 @@
 ---
 sidebar_position: 2
-slug: /launch_ragflow_from_source
+slug: /launch_ragforge_from_source
 ---
 
 # Launch service from source
 
-A guide explaining how to set up a RAGFlow service from its source code. By following this guide, you'll be able to debug using the source code.
+A guide explaining how to set up a RAGForge service from its source code. By following this guide, you'll be able to debug using the source code.
 
 ## Target audience
 
@@ -24,13 +24,13 @@ If you have not installed Docker on your local machine (Windows, Mac, or Linux),
 
 ## Launch a service from source
 
-To launch a RAGFlow service from source code:
+To launch a RAGForge service from source code:
 
-### Clone the RAGFlow repository
+### Clone the RAGForge repository
 
 ```bash
-git clone https://github.com/infiniflow/ragflow.git
-cd ragflow/
+git clone https://github.com/infiniflow/ragforge.git
+cd ragforge/
 ```
 
 ### Install Python dependencies
@@ -44,11 +44,11 @@ cd ragflow/
 2. Install Python dependencies:
    - slim:
    ```bash
-   uv sync --python 3.10 # install RAGFlow dependent python modules
+   uv sync --python 3.10 # install RAGForge dependent python modules
    ```
    - full:
    ```bash
-   uv sync --python 3.10 --all-extras # install RAGFlow dependent python modules
+   uv sync --python 3.10 --all-extras # install RAGForge dependent python modules
    ```
    *A virtual environment named `.venv` is created, and all Python dependencies are installed into the new environment.*
 
@@ -70,7 +70,7 @@ docker compose -f docker/docker-compose-base.yml up -d
 
 2. In **docker/service_conf.yaml.template**, update mysql port to `5455` and es port to `1200`, as specified in **docker/.env**.
 
-### Launch the RAGFlow backend service
+### Launch the RAGForge backend service
 
 1. Comment out the `nginx` line in **docker/entrypoint.sh**.
 
@@ -100,10 +100,10 @@ docker compose -f docker/docker-compose-base.yml up -d
    LD_PRELOAD=$JEMALLOC_PATH python rag/svr/task_executor.py 1;
    ```
    ```shell
-   python api/ragflow_server.py;
+   python api/ragforge_server.py;
    ```
 
-### Launch the RAGFlow frontend service
+### Launch the RAGForge frontend service
 
 1. Navigate to the `web` directory and install the frontend dependencies:
 
@@ -118,7 +118,7 @@ docker compose -f docker/docker-compose-base.yml up -d
    vim .umirc.ts
    ```
 
-3. Start up the RAGFlow frontend service:
+3. Start up the RAGForge frontend service:
 
    ```bash
    npm run dev 
@@ -128,18 +128,18 @@ docker compose -f docker/docker-compose-base.yml up -d
 
    ![](https://github.com/user-attachments/assets/0daf462c-a24d-4496-a66f-92533534e187)
 
-### Access the RAGFlow service
+### Access the RAGForge service
 
 In your web browser, enter `http://127.0.0.1:<PORT>/`, ensuring the port number matches that shown in the screenshot above.
 
-### Stop the RAGFlow service when the development is done
+### Stop the RAGForge service when the development is done
 
-1. Stop the RAGFlow frontend service:
+1. Stop the RAGForge frontend service:
    ```bash
    pkill npm
    ```
 
-2. Stop the RAGFlow backend service:
+2. Stop the RAGForge backend service:
    ```bash
    pkill -f "docker/entrypoint.sh"
    ```

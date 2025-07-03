@@ -9,17 +9,17 @@ Set variables to be used together with the system prompt for your LLM.
 
 ---
 
-When configuring the system prompt for a chat model, variables play an important role in enhancing flexibility and reusability. With variables, you can dynamically adjust the system prompt to be sent to your model. In the context of RAGFlow, if you have defined variables in the **Chat Configuration** dialogue, except for the system's reserved variable `{knowledge}`, you are required to pass in values for them from RAGFlow's [HTTP API](../../references/http_api_reference.md#converse-with-chat-assistant) or through its [Python SDK](../../references/python_api_reference.md#converse-with-chat-assistant).
+When configuring the system prompt for a chat model, variables play an important role in enhancing flexibility and reusability. With variables, you can dynamically adjust the system prompt to be sent to your model. In the context of RAGForge, if you have defined variables in the **Chat Configuration** dialogue, except for the system's reserved variable `{knowledge}`, you are required to pass in values for them from RAGForge's [HTTP API](../../references/http_api_reference.md#converse-with-chat-assistant) or through its [Python SDK](../../references/python_api_reference.md#converse-with-chat-assistant).
 
 :::danger IMPORTANT
-In RAGFlow, variables are closely linked with the system prompt. When you add a variable in the **Variable** section, include it in the system prompt. Conversely, when deleting a variable, ensure it is removed from the system prompt; otherwise, an error would occur.
+In RAGForge, variables are closely linked with the system prompt. When you add a variable in the **Variable** section, include it in the system prompt. Conversely, when deleting a variable, ensure it is removed from the system prompt; otherwise, an error would occur.
 :::
 
 ## Where to set variables
 
 Hover your mouse over your chat assistant, click **Edit** to open its **Chat Configuration** dialogue, then click the **Prompt engine** tab. Here, you can work on your variables in the **System prompt** field and the **Variable** section:
 
-![set_variables](https://raw.githubusercontent.com/infiniflow/ragflow-docs/main/images/prompt_engine.jpg)
+![set_variables](https://raw.githubusercontent.com/infiniflow/ragforge-docs/main/images/prompt_engine.jpg)
 
 ## 1. Manage variables
 
@@ -37,7 +37,7 @@ From v0.17.0 onward, you can start an AI chat without specifying knowledge bases
 
 ### Custom variables
 
-Besides `{knowledge}`, you can also define your own variables to pair with the system prompt. To use these custom variables, you must pass in their values through RAGFlow's official APIs. The **Optional** toggle determines whether these variables are required in the corresponding APIs:
+Besides `{knowledge}`, you can also define your own variables to pair with the system prompt. To use these custom variables, you must pass in their values through RAGForge's official APIs. The **Optional** toggle determines whether these variables are required in the corresponding APIs:
 
 - **Disabled** (Default): The variable is mandatory and must be provided.
 - **Enabled**: The variable is optional and can be omitted if not needed.
@@ -66,7 +66,7 @@ If you have removed `{knowledge}`, ensure that you thoroughly review and update 
 
 ## APIs
 
-The *only* way to pass in values for the custom variables defined in the **Chat Configuration** dialogue is to call RAGFlow's [HTTP API](../../references/http_api_reference.md#converse-with-chat-assistant) or through its [Python SDK](../../references/python_api_reference.md#converse-with-chat-assistant).
+The *only* way to pass in values for the custom variables defined in the **Chat Configuration** dialogue is to call RAGForge's [HTTP API](../../references/http_api_reference.md#converse-with-chat-assistant) or through its [Python SDK](../../references/python_api_reference.md#converse-with-chat-assistant).
 
 ### HTTP API
 
@@ -90,9 +90,9 @@ curl --request POST \
 See [Converse with chat assistant](../../references/python_api_reference.md#converse-with-chat-assistant). Here's an example:
 
 ```python {18}
-from ragflow_sdk import RAGFlow
+from ragforge_sdk import RAGForge
 
-rag_object = RAGFlow(api_key="<YOUR_API_KEY>", base_url="http://<YOUR_BASE_URL>:9380")
+rag_object = RAGForge(api_key="<YOUR_API_KEY>", base_url="http://<YOUR_BASE_URL>:9380")
 assistant = rag_object.list_chats(name="Miss R")
 assistant = assistant[0]
 session = assistant.create_session()    

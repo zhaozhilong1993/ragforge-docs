@@ -9,7 +9,7 @@ Initiate an AI-powered chat with a configured chat assistant.
 
 ---
 
-Knowledge base, hallucination-free chat, and file management are the three pillars of RAGFlow. Chats in RAGFlow are based on a particular knowledge base or multiple knowledge bases. Once you have created your knowledge base, finished file parsing, and [run a retrieval test](../dataset/run_retrieval_test.md), you can go ahead and start an AI conversation.
+Knowledge base, hallucination-free chat, and file management are the three pillars of RAGForge. Chats in RAGForge are based on a particular knowledge base or multiple knowledge bases. Once you have created your knowledge base, finished file parsing, and [run a retrieval test](../dataset/run_retrieval_test.md), you can go ahead and start an AI conversation.
 
 ## Start an AI chat
 
@@ -17,22 +17,22 @@ You start an AI conversation by creating an assistant.
 
 1. Click the **Chat** tab in the middle top of the page **>** **Create an assistant** to show the **Chat Configuration** dialogue *of your next dialogue*.
 
-   > RAGFlow offers you the flexibility of choosing a different chat model for each dialogue, while allowing you to set the default models in **System Model Settings**.
+   > RAGForge offers you the flexibility of choosing a different chat model for each dialogue, while allowing you to set the default models in **System Model Settings**.
 
 2. Update **Assistant settings**:
 
    - **Assistant name** is the name of your chat assistant. Each assistant corresponds to a dialogue with a unique combination of knowledge bases, prompts, hybrid search configurations, and large model settings.
    - **Empty response**:
-     - If you wish to *confine* RAGFlow's answers to your knowledge bases, leave a response here. Then, when it doesn't retrieve an answer, it *uniformly* responds with what you set here.
-     - If you wish RAGFlow to *improvise* when it doesn't retrieve an answer from your knowledge bases, leave it blank, which may give rise to hallucinations.
-   - **Show quote**: This is a key feature of RAGFlow and enabled by default. RAGFlow does not work like a black box. Instead, it clearly shows the sources of information that its responses are based on.
+     - If you wish to *confine* RAGForge's answers to your knowledge bases, leave a response here. Then, when it doesn't retrieve an answer, it *uniformly* responds with what you set here.
+     - If you wish RAGForge to *improvise* when it doesn't retrieve an answer from your knowledge bases, leave it blank, which may give rise to hallucinations.
+   - **Show quote**: This is a key feature of RAGForge and enabled by default. RAGForge does not work like a black box. Instead, it clearly shows the sources of information that its responses are based on.
    - Select the corresponding knowledge bases. You can select one or multiple knowledge bases, but ensure that they use the same embedding model, otherwise an error would occur.
 
 3. Update **Prompt engine**:
 
    - In **System**, you fill in the prompts for your LLM, you can also leave the default prompt as-is for the beginning.
    - **Similarity threshold** sets the similarity "bar" for each chunk of text. The default is 0.2. Text chunks with lower similarity scores are filtered out of the final response.
-   - **Keyword similarity weight** is set to 0.7 by default. RAGFlow uses a hybrid score system to evaluate the relevance of different text chunks. This value sets the weight assigned to the keyword similarity component in the hybrid score.
+   - **Keyword similarity weight** is set to 0.7 by default. RAGForge uses a hybrid score system to evaluate the relevance of different text chunks. This value sets the weight assigned to the keyword similarity component in the hybrid score.
      - If **Rerank model** is left empty, the hybrid score system uses keyword similarity and vector similarity, and the default weight assigned to the vector similarity component is 1-0.7=0.3.
      - If **Rerank model** is selected, the hybrid score system uses keyword similarity and reranker score, and the default weight assigned to the reranker score is 1-0.7=0.3.
    - **Top N** determines the *maximum* number of chunks to feed to the LLM. In other words, even if more chunks are retrieved, only the top N chunks are provided as input.
@@ -50,7 +50,7 @@ You start an AI conversation by creating an assistant.
 
 4. Update **Model Setting**:
 
-   - In **Model**: you select the chat model. Though you have selected the default chat model in **System Model Settings**, RAGFlow allows you to choose an alternative chat model for your dialogue.
+   - In **Model**: you select the chat model. Though you have selected the default chat model in **System Model Settings**, RAGForge allows you to choose an alternative chat model for your dialogue.
    - **Freedom**: A shortcut to **Temperature**, **Top P**, **Presence penalty**, and **Frequency penalty** settings, indicating the freedom level of the model. From **Improvise**, **Precise**, to **Balance**, each preset configuration corresponds to a unique combination of **Temperature**, **Top P**, **Presence penalty**, and **Frequency penalty**.   
    This parameter has three options:
       - **Improvise**: Produces more creative responses.
@@ -98,9 +98,9 @@ Hover over an intended chat assistant **>** **Edit** to show the chat configurat
 
 ## Integrate chat capabilities into your application or webpage
 
-RAGFlow offers HTTP and Python APIs for you to integrate RAGFlow's capabilities into your applications. Read the following documents for more information:
+RAGForge offers HTTP and Python APIs for you to integrate RAGForge's capabilities into your applications. Read the following documents for more information:
 
-- [Acquire a RAGFlow API key](../../develop/acquire_ragflow_api_key.md)
+- [Acquire a RAGForge API key](../../develop/acquire_ragforge_api_key.md)
 - [HTTP API reference](../../references/http_api_reference.md)
 - [Python API reference](../../references/python_api_reference.md)
 

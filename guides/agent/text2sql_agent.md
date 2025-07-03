@@ -5,7 +5,7 @@ slug: /text2sql_agent
 
 # Create a Text2SQL agent
 
-Build a Text2SQL agent leveraging RAGFlow's RAG capabilities. Contributed by @TeslaZY.
+Build a Text2SQL agent leveraging RAGForge's RAG capabilities. Contributed by @TeslaZY.
 
 ## Scenario
 
@@ -25,7 +25,7 @@ The Text2SQL agent bridges the gap between Natural Language Processing (NLP) and
 
 In summary, the Text2SQL agent seeks to make database queries more intuitive and user-friendly while ensuring efficiency and accuracy. It caters to a broad spectrum of users, from completely non-technical individuals to seasoned data analysts and developers.
 
-However, traditional Text2SQL solutions often require model fine-tuning, which can substantially escalate deployment and maintenance costs when implemented in enterprise environments alongside RAG or Agent components. RAGFlow’s RAG-based Text2SQL utilizes an existing (connected) large language model (LLM), allowing for seamless integration with other RAG/Agent components without the necessity for additional fine-tuned models.
+However, traditional Text2SQL solutions often require model fine-tuning, which can substantially escalate deployment and maintenance costs when implemented in enterprise environments alongside RAG or Agent components. RAGForge’s RAG-based Text2SQL utilizes an existing (connected) large language model (LLM), allowing for seamless integration with other RAG/Agent components without the necessity for additional fine-tuned models.
 
 ## Recipe
 
@@ -210,7 +210,7 @@ COMMIT;
 ```
 ### Configure Knowledge Base
 
-For RAGFlow’s RAG-based Text2SQL, the following knowledge bases are typically required:
+For RAGForge’s RAG-based Text2SQL, the following knowledge bases are typically required:
 
 - **DDL**: Database table creation statements.
 - **DB_Description**: Detailed descriptions of tables and columns.
@@ -370,7 +370,7 @@ Help me summarize stock quantities for each product
 
 ### Debug the Agent
 
-Since version 0.15.0, ragflow has introduced step-by-step execution for Agent components/tools, providing a robust mechanism for debugging and testing. Let's explore how to perform a step run.
+Since version 0.15.0, ragforge has introduced step-by-step execution for Agent components/tools, providing a robust mechanism for debugging and testing. Let's explore how to perform a step run.
 
 1. To enter Test Run mode, you can either click the triangle icon located above the component or access the component's detail page by clicking on the component itself. Once there, select the Test Run button in the upper right corner of the component details.
    ![](https://github.com/user-attachments/assets/9f5d5c3e-396d-418b-9c7a-fcd8ad5af418)
@@ -413,4 +413,4 @@ In real production scenarios within vertical domains, several considerations are
 
 4. **Facilitating User Feedback**: Implementing a feedback mechanism within the Agent allows users to provide correct SQL queries. Administrators can then use this feedback to automatically generate corresponding QA data, reducing the need for manual maintenance.
 
-In summary, achieving high-quality output from Text2SQL remains contingent upon high-quality input. Constructing robust question-and-answer datasets is at the core of optimizing RAGFlow's Text2SQL capabilities.
+In summary, achieving high-quality output from Text2SQL remains contingent upon high-quality input. Constructing robust question-and-answer datasets is at the core of optimizing RAGForge's Text2SQL capabilities.

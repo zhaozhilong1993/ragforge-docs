@@ -11,12 +11,12 @@ Deploy and run local models using Ollama, Xinference, or other frameworks.
 
 ---
 
-RAGFlow supports deploying models locally using Ollama, Xinference, IPEX-LLM, or jina. If you have locally deployed models to leverage or wish to enable GPU or CUDA for inference acceleration, you can bind Ollama or Xinference into RAGFlow and use either of them as a local "server" for interacting with your local models.
+RAGForge supports deploying models locally using Ollama, Xinference, IPEX-LLM, or jina. If you have locally deployed models to leverage or wish to enable GPU or CUDA for inference acceleration, you can bind Ollama or Xinference into RAGForge and use either of them as a local "server" for interacting with your local models.
 
-RAGFlow seamlessly integrates with Ollama and Xinference, without the need for further environment configurations. You can use them to deploy two types of local models in RAGFlow: chat models and embedding models.
+RAGForge seamlessly integrates with Ollama and Xinference, without the need for further environment configurations. You can use them to deploy two types of local models in RAGForge: chat models and embedding models.
 
 :::tip NOTE
-This user guide does not intend to cover much of the installation or configuration details of Ollama or Xinference; its focus is on configurations inside RAGFlow. For the most current information, you may need to check out the official site of Ollama or Xinference.
+This user guide does not intend to cover much of the installation or configuration details of Ollama or Xinference; its focus is on configurations inside RAGForge. For the most current information, you may need to check out the official site of Ollama or Xinference.
 :::
 
 ## Deploy local models using Ollama
@@ -58,20 +58,20 @@ success
 
 ### 2. Ensure Ollama is accessible
 
-- If RAGFlow runs in Docker and Ollama runs on the same host machine, check if Ollama is accessible from inside the RAGFlow container:
+- If RAGForge runs in Docker and Ollama runs on the same host machine, check if Ollama is accessible from inside the RAGForge container:
 ```bash
-sudo docker exec -it ragflow-server bash
+sudo docker exec -it ragforge-server bash
 curl  http://host.docker.internal:11434/
 Ollama is running
 ```
 
-- If RAGFlow is launched from source code and Ollama runs on the same host machine as RAGFlow, check if Ollama is accessible from RAGFlow's host machine:
+- If RAGForge is launched from source code and Ollama runs on the same host machine as RAGForge, check if Ollama is accessible from RAGForge's host machine:
 ```bash
 curl  http://localhost:11434/
 Ollama is running
 ```
 
-- If RAGFlow and Ollama run on different machines, check if Ollama is accessible from RAGFlow's host machine:
+- If RAGForge and Ollama run on different machines, check if Ollama is accessible from RAGForge's host machine:
 ```bash
 curl  http://${IP_OF_OLLAMA_MACHINE}:11434/
 Ollama is running
@@ -79,9 +79,9 @@ Ollama is running
 
 ### 4. Add Ollama
 
-In RAGFlow, click on your logo on the top right of the page **>** **Model providers** and add Ollama to RAGFlow:
+In RAGForge, click on your logo on the top right of the page **>** **Model providers** and add Ollama to RAGForge:
 
-![add ollama](https://github.com/infiniflow/ragflow/assets/93570324/10635088-028b-4b3d-add9-5c5a6e626814)
+![add ollama](https://github.com/infiniflow/ragforge/assets/93570324/10635088-028b-4b3d-add9-5c5a6e626814)
 
 
 ### 5. Complete basic Ollama settings
@@ -141,9 +141,9 @@ $ xinference launch -u mistral --model-name mistral-v0.1 --size-in-billions 7 --
 ```
 ### 4. Add Xinference
 
-In RAGFlow, click on your logo on the top right of the page **>** **Model providers** and add Xinference to RAGFlow:
+In RAGForge, click on your logo on the top right of the page **>** **Model providers** and add Xinference to RAGForge:
 
-![add xinference](https://github.com/infiniflow/ragflow/assets/93570324/10635088-028b-4b3d-add9-5c5a6e626814)
+![add xinference](https://github.com/infiniflow/ragforge/assets/93570324/10635088-028b-4b3d-add9-5c5a6e626814)
 
 ### 5. Complete basic Xinference settings
 
@@ -310,7 +310,7 @@ With the Ollama service running, open a new terminal and run `./ollama pull <mod
 
 ### 4. Configure RAGflow
 
-To enable IPEX-LLM accelerated Ollama in RAGFlow, you must also complete the configurations in RAGFlow. The steps are identical to those outlined in the *Deploy a local model using Ollama* section:
+To enable IPEX-LLM accelerated Ollama in RAGForge, you must also complete the configurations in RAGForge. The steps are identical to those outlined in the *Deploy a local model using Ollama* section:
 
 1. [Add Ollama](#4-add-ollama)
 2. [Complete basic Ollama settings](#5-complete-basic-ollama-settings)

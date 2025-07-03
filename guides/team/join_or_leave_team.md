@@ -22,14 +22,14 @@ You cannot invite users to a team unless you are its owner.
 
 ## Prerequisites
 
-1. Ensure that your Email address that received the team invitation is associated with a RAGFlow user account.
+1. Ensure that your Email address that received the team invitation is associated with a RAGForge user account.
 2. The team owner should share his knowledge bases by setting their **Permission** to **Team**.
 
 ## Accept or decline team invite
 
 1. You will be notified when you receive an invitation to join a team:
 
-![team_notification](https://raw.githubusercontent.com/infiniflow/ragflow-docs/main/images/team_notification.jpg)
+![team_notification](https://raw.githubusercontent.com/infiniflow/ragforge-docs/main/images/team_notification.jpg)
 
 2. Click on your avatar in the top right corner of the page, then select **Team** in the left-hand panel to access the **Team** page.
 
@@ -43,4 +43,4 @@ _After accepting the team invite, you should be able to view and update the team
 
 ## Leave a joined team
 
-![leave_team](https://raw.githubusercontent.com/infiniflow/ragflow-docs/main/images/quit.jpg)
+![leave_team](https://raw.githubusercontent.com/infiniflow/ragforge-docs/main/images/quit.jpg)

@@ -13,7 +13,7 @@ slug: /release_notes
 
 ### 新功能
 
-- MCP server: enables access to RAGFlow's knowledge bases via MCP.
+- MCP server: enables access to RAGForge's knowledge bases via MCP.
 - DeepDoc supports adopting VLM model as a processing pipeline during document layout recognition, enabling in-depth analysis of images in PDFs.
 - Agent version control: all updates are continuously logged and can be rolled back to a previous version via export.
 - Team collaboration: Agents can be shared with team members.
@@ -31,7 +31,7 @@ slug: /release_notes
 
 - [Set page rank](./guides/dataset/set_page_rank.md)
 - [Enable RAPTOR](./guides/dataset/enable_raptor.md)
-- [RAGFlow MCP server overview](./develop/mcp.md)
+- [RAGForge MCP server overview](./develop/mcp.md)
 
 ## v0.17.2
 
@@ -42,7 +42,7 @@ Released on March 13, 2025.
 - Removes the **Max_tokens** setting from **Chat configuration**.
 - Removes the **Max_tokens** setting from **Generate**, **Rewrite**, **Categorize**, **Keyword** agent components.
 
-From this release onwards, if you still see RAGFlow's responses being cut short or truncated, check the **Max_tokens** setting of your model provider.
+From this release onwards, if you still see RAGForge's responses being cut short or truncated, check the **Max_tokens** setting of your model provider.
 
 ### Improvements
 
@@ -110,7 +110,7 @@ Released on March 3, 2025.
 - Models: Updates the supported model list for Tongyi-Qianwen (Qwen), adding DeepSeek-specific models; adds ModelScope as a model provider.
 - APIs: Document metadata can be updated through an API.
 
-The following diagram illustrates the workflow of RAGFlow's Deep Research:
+The following diagram illustrates the workflow of RAGForge's Deep Research:
 
 ![Image](https://github.com/user-attachments/assets/f65d4759-4f09-4d9d-9549-c0e1fe907525)
 
@@ -141,12 +141,12 @@ Released on February 6, 2025.
 ### New features
 
 - Supports DeepSeek R1 and DeepSeek V3.
-- GraphRAG refactor: Knowledge graph is dynamically built on an entire knowledge base (dataset) rather than on an individual file, and automatically updated when a newly uploaded file starts parsing. See [here](https://ragflow.io/docs/dev/construct_knowledge_graph).
+- GraphRAG refactor: Knowledge graph is dynamically built on an entire knowledge base (dataset) rather than on an individual file, and automatically updated when a newly uploaded file starts parsing. See [here](https://ragforge.io/docs/dev/construct_knowledge_graph).
 - Adds an **Iteration** agent component and a **Research report generator** agent template. See [here](./guides/agent/agent_component_reference/iteration.mdx).
 - New UI language: Portuguese.
 - Allows setting metadata for a specific file in a knowledge base to enhance AI-powered chats. See [here](./guides/dataset/set_metadata.md).
-- Upgrades RAGFlow's document engine [Infinity](https://github.com/infiniflow/infinity) to v0.6.0.dev3.
-- Supports GPU acceleration for DeepDoc (see [docker-compose-gpu.yml](https://github.com/infiniflow/ragflow/blob/main/docker/docker-compose-gpu.yml)).
+- Upgrades RAGForge's document engine [Infinity](https://github.com/infiniflow/infinity) to v0.6.0.dev3.
+- Supports GPU acceleration for DeepDoc (see [docker-compose-gpu.yml](https://github.com/infiniflow/ragforge/blob/main/docker/docker-compose-gpu.yml)).
 - Supports creating and referencing a **Tag** knowledge base as a key milestone towards bridging the semantic gap between query and response.
 
 :::danger IMPORTANT
@@ -179,7 +179,7 @@ Released on December 25, 2024.
 
 ### Upgrades
 
-- Upgrades RAGFlow's document engine [Infinity](https://github.com/infiniflow/infinity) to v0.5.2.
+- Upgrades RAGForge's document engine [Infinity](https://github.com/infiniflow/infinity) to v0.5.2.
 - Enhances the log display of document parsing status.
 
 ### Fixed issues
@@ -199,13 +199,13 @@ This release fixes the following issues:
 
 Adds an optional parameter `"user_id"` to the following APIs:
 
-- [Create session with chat assistant](https://ragflow.io/docs/dev/http_api_reference#create-session-with-chat-assistant)
-- [Update chat assistant's session](https://ragflow.io/docs/dev/http_api_reference#update-chat-assistants-session)
-- [List chat assistant's sessions](https://ragflow.io/docs/dev/http_api_reference#list-chat-assistants-sessions)
-- [Create session with agent](https://ragflow.io/docs/dev/http_api_reference#create-session-with-agent)
-- [Converse with chat assistant](https://ragflow.io/docs/dev/http_api_reference#converse-with-chat-assistant)
-- [Converse with agent](https://ragflow.io/docs/dev/http_api_reference#converse-with-agent)
-- [List agent sessions](https://ragflow.io/docs/dev/http_api_reference#list-agent-sessions)
+- [Create session with chat assistant](https://ragforge.io/docs/dev/http_api_reference#create-session-with-chat-assistant)
+- [Update chat assistant's session](https://ragforge.io/docs/dev/http_api_reference#update-chat-assistants-session)
+- [List chat assistant's sessions](https://ragforge.io/docs/dev/http_api_reference#list-chat-assistants-sessions)
+- [Create session with agent](https://ragforge.io/docs/dev/http_api_reference#create-session-with-agent)
+- [Converse with chat assistant](https://ragforge.io/docs/dev/http_api_reference#converse-with-chat-assistant)
+- [Converse with agent](https://ragforge.io/docs/dev/http_api_reference#converse-with-agent)
+- [List agent sessions](https://ragforge.io/docs/dev/http_api_reference#list-agent-sessions)
 
 ## v0.15.0
 
@@ -215,8 +215,8 @@ Released on December 18, 2024.
 
 - Introduces additional Agent-specific APIs.
 - Supports using page rank score to improve retrieval performance when searching across multiple knowledge bases.
-- Offers an iframe in Chat and Agent to facilitate the integration of RAGFlow into your webpage.
-- Adds a Helm chart for deploying RAGFlow on Kubernetes.
+- Offers an iframe in Chat and Agent to facilitate the integration of RAGForge into your webpage.
+- Adds a Helm chart for deploying RAGForge on Kubernetes.
 - Supports importing or exporting an agent in JSON format.
 - Supports step run for Agent components/tools.
 - Adds a new UI language: Japanese.
@@ -233,13 +233,13 @@ Released on December 18, 2024.
 
 #### HTTP APIs
 
-- [List agent sessions](https://ragflow.io/docs/dev/http_api_reference#list-agent-sessions)
-- [List agents](https://ragflow.io/docs/dev/http_api_reference#list-agents)
+- [List agent sessions](https://ragforge.io/docs/dev/http_api_reference#list-agent-sessions)
+- [List agents](https://ragforge.io/docs/dev/http_api_reference#list-agents)
 
 #### Python APIs
 
-- [List agent sessions](https://ragflow.io/docs/dev/python_api_reference#list-agent-sessions)
-- [List agents](https://ragflow.io/docs/dev/python_api_reference#list-agents)
+- [List agent sessions](https://ragforge.io/docs/dev/python_api_reference#list-agent-sessions)
+- [List agents](https://ragforge.io/docs/dev/python_api_reference#list-agents)
 
 ## v0.14.1
 
@@ -247,7 +247,7 @@ Released on November 29, 2024.
 
 ### Improvements
 
-Adds [Infinity's configuration file](https://github.com/infiniflow/ragflow/blob/main/docker/infinity_conf.toml) to facilitate integration and customization of [Infinity](https://github.com/infiniflow/infinity) as a document engine. From this release onwards, updates to Infinity's configuration can be made directly within RAGFlow and will take effect immediately after restarting RAGFlow using `docker compose`. [#3715](https://github.com/infiniflow/ragflow/pull/3715)
+Adds [Infinity's configuration file](https://github.com/infiniflow/ragforge/blob/main/docker/infinity_conf.toml) to facilitate integration and customization of [Infinity](https://github.com/infiniflow/infinity) as a document engine. From this release onwards, updates to Infinity's configuration can be made directly within RAGForge and will take effect immediately after restarting RAGForge using `docker compose`. [#3715](https://github.com/infiniflow/ragforge/pull/3715)
 
 ### Fixed issues
 
@@ -265,7 +265,7 @@ Released on November 26, 2024.
 
 ### New features
 
-- Supports [Infinity](https://github.com/infiniflow/infinity) or Elasticsearch (default) as document engine for vector storage and full-text indexing. [#2894](https://github.com/infiniflow/ragflow/pull/2894)
+- Supports [Infinity](https://github.com/infiniflow/infinity) or Elasticsearch (default) as document engine for vector storage and full-text indexing. [#2894](https://github.com/infiniflow/ragforge/pull/2894)
 - Enhances user experience by adding more variables to the Agent and implementing auto-saving.
 - Adds a three-step translation agent template, inspired by [Andrew Ng's translation agent](https://github.com/andrewyng/translation-agent).
 - Adds an SEO-optimized blog writing agent template.
@@ -278,33 +278,33 @@ Released on November 26, 2024.
 
 ### Compatibility changes
 
-As of this release, **service_config.yaml.template** replaces **service_config.yaml** for configuring backend services. Upon Docker container startup, the environment variables defined in this template file are automatically populated and a **service_config.yaml** is auto-generated from it. [#3341](https://github.com/infiniflow/ragflow/pull/3341)
+As of this release, **service_config.yaml.template** replaces **service_config.yaml** for configuring backend services. Upon Docker container startup, the environment variables defined in this template file are automatically populated and a **service_config.yaml** is auto-generated from it. [#3341](https://github.com/infiniflow/ragforge/pull/3341)
 
 This approach eliminates the need to manually update **service_config.yaml** after making changes to **.env**, facilitating dynamic environment configurations.
 
 :::danger IMPORTANT
-Ensure that you [upgrade **both** your code **and** Docker image to this release](https://ragflow.io/docs/dev/upgrade_ragflow#upgrade-ragflow-to-the-most-recent-officially-published-release) before trying this new approach.
+Ensure that you [upgrade **both** your code **and** Docker image to this release](https://ragforge.io/docs/dev/upgrade_ragforge#upgrade-ragforge-to-the-most-recent-officially-published-release) before trying this new approach.
 :::
 
 ### Related APIs
 
 #### HTTP APIs
 
-- [Create session with agent](https://ragflow.io/docs/dev/http_api_reference#create-session-with-agent)
-- [Converse with agent](https://ragflow.io/docs/dev/http_api_reference#converse-with-agent)
+- [Create session with agent](https://ragforge.io/docs/dev/http_api_reference#create-session-with-agent)
+- [Converse with agent](https://ragforge.io/docs/dev/http_api_reference#converse-with-agent)
 
 #### Python APIs
 
-- [Create session with agent](https://ragflow.io/docs/dev/python_api_reference#create-session-with-agent)
-- [Converse with agent](https://ragflow.io/docs/dev/python_api_reference#create-session-with-agent)
+- [Create session with agent](https://ragforge.io/docs/dev/python_api_reference#create-session-with-agent)
+- [Converse with agent](https://ragforge.io/docs/dev/python_api_reference#create-session-with-agent)
 
 ### Documentation
 
 #### Added documents
 
-- [Configurations](https://ragflow.io/docs/dev/configurations)
+- [Configurations](https://ragforge.io/docs/dev/configurations)
 - [Manage team members](./guides/team/manage_team_members.md)
-- [Run health check on RAGFlow's dependencies](https://ragflow.io/docs/dev/run_health_check)
+- [Run health check on RAGForge's dependencies](https://ragforge.io/docs/dev/run_health_check)
 
 ## v0.13.0
 
@@ -321,10 +321,10 @@ Released on October 31, 2024.
 - Introduces HTTP and Python APIs for dataset management, file management within dataset, and chat assistant management.
 
 :::tip NOTE
-To download RAGFlow's Python SDK:
+To download RAGForge's Python SDK:
 
 ```bash
-pip install ragflow-sdk==0.13.0
+pip install ragforge-sdk==0.13.0
 ```
 :::
 
@@ -332,7 +332,7 @@ pip install ragflow-sdk==0.13.0
 
 #### Added documents
 
-- [Acquire a RAGFlow API key](./develop/acquire_ragflow_api_key.md)
+- [Acquire a RAGForge API key](./develop/acquire_ragforge_api_key.md)
 - [HTTP API Reference](./references/http_api_reference.md)
 - [Python API Reference](./references/python_api_reference.md)
 
@@ -342,7 +342,7 @@ Released on September 30, 2024.
 
 ### New features
 
-- Offers slim editions of RAGFlow's Docker images, which do not include built-in BGE/BCE embedding or reranking models.
+- Offers slim editions of RAGForge's Docker images, which do not include built-in BGE/BCE embedding or reranking models.
 - Improves the results of multi-round dialogues.
 - Enables users to remove added LLM vendors.
 - Adds support for **OpenTTS** and **SparkTTS** models.
@@ -352,7 +352,7 @@ Released on September 30, 2024.
 
 ### Compatibility changes
 
-As of this release, RAGFlow offers slim editions of its Docker images to improve the experience for users with limited Internet access. A slim edition of RAGFlow's Docker image does not include built-in BGE/BCE embedding models and has a size of about 1GB; a full edition of RAGFlow is approximately 9GB and includes both built-in embedding models and embedding models that will be downloaded once you select them in the RAGFlow UI.
+As of this release, RAGForge offers slim editions of its Docker images to improve the experience for users with limited Internet access. A slim edition of RAGForge's Docker image does not include built-in BGE/BCE embedding models and has a size of about 1GB; a full edition of RAGForge is approximately 9GB and includes both built-in embedding models and embedding models that will be downloaded once you select them in the RAGForge UI.
 
 The default Docker image edition is `nightly-slim`. The following list clarifies the differences between various editions:
 
@@ -361,13 +361,13 @@ The default Docker image edition is `nightly-slim`. The following list clarifies
 - `nightly`: The full edition of the most recent tested Docker image.
 - `v0.12.0`: The full edition of the most recent **officially released** Docker image.
 
-See [Upgrade RAGFlow](https://ragflow.io/docs/dev/upgrade_ragflow) for instructions on upgrading.
+See [Upgrade RAGForge](https://ragforge.io/docs/dev/upgrade_ragforge) for instructions on upgrading.
 
 ### Documentation
 
 #### Added documents
 
-- [Upgrade RAGFlow](https://ragflow.io/docs/dev/upgrade_ragflow)
+- [Upgrade RAGForge](https://ragforge.io/docs/dev/upgrade_ragforge)
 
 ## v0.11.0
 
@@ -375,7 +375,7 @@ Released on September 14, 2024.
 
 ### New features
 
--  Introduces an AI search interface within the RAGFlow UI.
+-  Introduces an AI search interface within the RAGForge UI.
 -  Supports audio output via **FishAudio** or **Tongyi Qwen TTS**.
 -  Allows the use of Postgres for metadata storage, in addition to MySQL.
 -  Supports object storage options with S3 or Azure Blob.
@@ -440,20 +440,20 @@ Released on May 31, 2024.
 - Supports ARM64 platforms.
 
 :::danger IMPORTANT
-While we also test RAGFlow on ARM64 platforms, we do not maintain RAGFlow Docker images for ARM.
+While we also test RAGForge on ARM64 platforms, we do not maintain RAGForge Docker images for ARM.
 
-If you are on an ARM platform, follow [this guide](./develop/build_docker_image.mdx) to build a RAGFlow Docker image.
+If you are on an ARM platform, follow [this guide](./develop/build_docker_image.mdx) to build a RAGForge Docker image.
 :::
 
 ### Related APIs
 
 #### HTTP API
 
-- [Delete documents](https://ragflow.io/docs/dev/http_api_reference#delete-documents)
+- [Delete documents](https://ragforge.io/docs/dev/http_api_reference#delete-documents)
 
 #### Python API
 
-- [Delete documents](https://ragflow.io/docs/dev/python_api_reference#delete-documents)
+- [Delete documents](https://ragforge.io/docs/dev/python_api_reference#delete-documents)
 
 ## v0.6.0
 
@@ -470,11 +470,11 @@ Released on May 21, 2024.
 
 #### HTTP API
 
-- [Retrieve chunks](https://ragflow.io/docs/dev/http_api_reference#retrieve-chunks)
+- [Retrieve chunks](https://ragforge.io/docs/dev/http_api_reference#retrieve-chunks)
 
 #### Python API
 
-- [Retrieve chunks](https://ragflow.io/docs/dev/python_api_reference#retrieve-chunks)
+- [Retrieve chunks](https://ragforge.io/docs/dev/python_api_reference#retrieve-chunks)
 
 ## v0.5.0
 

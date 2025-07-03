@@ -5,7 +5,7 @@ slug: /http_api_reference
 
 # HTTP API
 
-A complete reference for RAGFlow's RESTful API. Before proceeding, please ensure you [have your RAGFlow API key ready for authentication](../guides/models/llm_api_key_setup.md).
+A complete reference for RAGForge's RESTful API. Before proceeding, please ensure you [have your RAGForge API key ready for authentication](../guides/models/llm_api_key_setup.md).
 
 ---
 
@@ -877,7 +877,7 @@ Downloads a document from a specified dataset.
 curl --request GET \
      --url http://{address}/api/v1/datasets/{dataset_id}/documents/{document_id} \
      --header 'Authorization: Bearer <YOUR_API_KEY>' \
-     --output ./ragflow.txt
+     --output ./ragforge.txt
 ```
 
 ##### Request parameters
@@ -1447,7 +1447,7 @@ curl --request PUT \
      --header 'Authorization: Bearer <YOUR_API_KEY>' \
      --data '
      {   
-          "content": "ragflow123",  
+          "content": "ragforge123",  
           "important_keywords": []  
      }'
 ```
@@ -1525,7 +1525,7 @@ curl --request POST \
      --header 'Authorization: Bearer <YOUR_API_KEY>' \
      --data '
      {
-          "question": "What is advantage of ragflow?",
+          "question": "What is advantage of ragforge?",
           "dataset_ids": ["b2a62730759d11ef987d0242ac120004"],
           "document_ids": ["77df9ef4759a11ef8bdd0242ac120004"]
      }'
@@ -1570,11 +1570,11 @@ Success:
     "data": {
         "chunks": [
             {
-                "content": "ragflow content",
-                "content_ltks": "ragflow content",
+                "content": "ragforge content",
+                "content_ltks": "ragforge content",
                 "document_id": "5c5999ec7be811ef9cab0242ac120005",
                 "document_keyword": "1.txt",
-                "highlight": "<em>ragflow</em> content",
+                "highlight": "<em>ragforge</em> content",
                 "id": "d78435d142bd5cf6704da62c778795c5",
                 "image_id": "",
                 "important_keywords": [
@@ -1671,7 +1671,7 @@ curl --request POST \
     Similar to the presence penalty, this reduces the model’s tendency to repeat the same words frequently. Defaults to `0.7`.
 - `"prompt"`: (*Body parameter*), `object`  
   Instructions for the LLM to follow. If it is not explicitly set, a JSON object with the following values will be generated as the default. A `prompt` JSON object contains the following attributes:  
-  - `"similarity_threshold"`: `float` RAGFlow employs either a combination of weighted keyword similarity and weighted vector cosine similarity, or a combination of weighted keyword similarity and weighted reranking score during retrieval. This argument sets the threshold for similarities between the user query and chunks. If a similarity score falls below this threshold, the corresponding chunk will be excluded from the results. The default value is `0.2`.
+  - `"similarity_threshold"`: `float` RAGForge employs either a combination of weighted keyword similarity and weighted vector cosine similarity, or a combination of weighted keyword similarity and weighted reranking score during retrieval. This argument sets the threshold for similarities between the user query and chunks. If a similarity score falls below this threshold, the corresponding chunk will be excluded from the results. The default value is `0.2`.
   - `"keywords_similarity_weight"`: `float` This argument sets the weight of keyword similarity in the hybrid similarity score with vector cosine similarity or reranking model similarity. By adjusting this weight, you can control the influence of keyword similarity in relation to other similarity measures. The default value is `0.7`.
   - `"top_n"`: `int` This argument specifies the number of top chunks with similarity scores above the `similarity_threshold` that are fed to the LLM. The LLM will *only* access these 'top N' chunks.  The default value is `6`.
   - `"variables"`: `object[]` This argument lists the variables to use in the 'System' field of **Chat Configurations**. Note that:  
@@ -1804,7 +1804,7 @@ curl --request PUT \
     Similar to the presence penalty, this reduces the model’s tendency to repeat the same words frequently. Defaults to `0.7`.
 - `"prompt"`: (*Body parameter*), `object`  
   Instructions for the LLM to follow.  A `prompt` object contains the following attributes:  
-  - `"similarity_threshold"`: `float` RAGFlow employs either a combination of weighted keyword similarity and weighted vector cosine similarity, or a combination of weighted keyword similarity and weighted rerank score during retrieval. This argument sets the threshold for similarities between the user query and chunks. If a similarity score falls below this threshold, the corresponding chunk will be excluded from the results. The default value is `0.2`.
+  - `"similarity_threshold"`: `float` RAGForge employs either a combination of weighted keyword similarity and weighted vector cosine similarity, or a combination of weighted keyword similarity and weighted rerank score during retrieval. This argument sets the threshold for similarities between the user query and chunks. If a similarity score falls below this threshold, the corresponding chunk will be excluded from the results. The default value is `0.2`.
   - `"keywords_similarity_weight"`: `float` This argument sets the weight of keyword similarity in the hybrid similarity score with vector cosine similarity or reranking model similarity. By adjusting this weight, you can control the influence of keyword similarity in relation to other similarity measures. The default value is `0.7`.
   - `"top_n"`: `int` This argument specifies the number of top chunks with similarity scores above the `similarity_threshold` that are fed to the LLM. The LLM will *only* access these 'top N' chunks.  The default value is `8`.
   - `"variables"`: `object[]` This argument lists the variables to use in the 'System' field of **Chat Configurations**. Note that:  

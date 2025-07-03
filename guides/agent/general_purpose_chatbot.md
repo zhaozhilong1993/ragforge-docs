@@ -9,7 +9,7 @@ Create a general-purpose chatbot.
 
 ---
 
-Chatbot is one of the most common AI scenarios. However, effectively understanding user queries and responding appropriately remains a challenge. RAGFlow's general-purpose chatbot agent is our attempt to tackle this longstanding issue.  
+Chatbot is one of the most common AI scenarios. However, effectively understanding user queries and responding appropriately remains a challenge. RAGForge's general-purpose chatbot agent is our attempt to tackle this longstanding issue.  
 
 This chatbot closely resembles the chatbot introduced in [Start an AI chat](../chat/start_chat.md), but with a key difference - it introduces a reflective mechanism that allows it to improve the retrieval from the target knowledge bases by rewriting the user's query.
 
@@ -33,7 +33,7 @@ To create a general-purpose chatbot agent using our template:
    ![workflow_editor](https://github.com/user-attachments/assets/52e7dc62-4bf5-4fbb-ab73-4a6e252065f0)
 
 :::tip NOTE
-RAGFlow's no-code editor spares you the trouble of coding, making agent development effortless.
+RAGForge's no-code editor spares you the trouble of coding, making agent development effortless.
 :::
 
 ## Understand each component in the template
