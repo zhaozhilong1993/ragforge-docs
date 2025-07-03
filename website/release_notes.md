@@ -323,9 +323,8 @@ Released on October 31, 2024.
 :::tip NOTE
 To download RAGFlow's Python SDK:
 
-```bash
-pip install ragflow-sdk==0.13.0
-```
+    pip install ragflow-sdk==0.13.0
+    
 :::
 
 ### Documentation

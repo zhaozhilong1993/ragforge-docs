@@ -17,47 +17,43 @@ RAGForge 是一个强大的企业级 AI 知识库解决方案，基于 RAG（Ret
 
 ### 2. 克隆项目
 
-```bash
-# 克隆 RAGForge 项目
-git clone https://github.com/zhaozhilong1993/ragflow.git
-cd ragflow
-
-# 更新子模块
-git submodule update --init --recursive
-```
+    # 克隆 RAGForge 项目
+    git clone https://github.com/zhaozhilong1993/ragflow.git
+    cd ragflow
+    
+    # 更新子模块
+    git submodule update --init --recursive
+    
 
 ### 3. 后端配置
 
-```bash
-# 安装 Python 依赖
-pip install -r requirements.txt
-
-# 配置环境变量
-cp .env.example .env
-# 编辑 .env 文件配置数据库等信息
-```
+    # 安装 Python 依赖
+    pip install -r requirements.txt
+    
+    # 配置环境变量
+    cp .env.example .env
+    # 编辑 .env 文件配置数据库等信息
+    
 
 ### 4. 前端配置
 
-```bash
-# 进入前端目录
-cd web
-
-# 安装依赖
-npm install
-
-# 启动开发服务器
-npm run dev
-```
+    # 进入前端目录
+    cd web
+    
+    # 安装依赖
+    npm install
+    
+    # 启动开发服务器
+    npm run dev
+    
 
 ### 5. 启动服务
 
-```bash
-# 启动后端服务
-python -m uvicorn app.main:app --reload
-
-# 前端服务已在另一个终端启动
-```
+    # 启动后端服务
+    python -m uvicorn app.main:app --reload
+    
+    # 前端服务已在另一个终端启动
+    
 
 ## 创建第一个知识库
 
@@ -88,45 +84,42 @@ python -m uvicorn app.main:app --reload
 
 ### 1. 认证
 
-```python
-import requests
-
-# 获取访问令牌
-response = requests.post('http://localhost:8000/api/auth/login', json={
-    'username': 'your_username',
-    'password': 'your_password'
-})
-
-token = response.json()['access_token']
-headers = {'Authorization': f'Bearer {token}'}
-```
+    import requests
+    
+    # 获取访问令牌
+    response = requests.post('http://localhost:8000/api/auth/login', json={
+        'username': 'your_username',
+        'password': 'your_password'
+    })
+    
+    token = response.json()['access_token']
+    headers = {'Authorization': f'Bearer {token}'}
+    
 
 ### 2. 上传文档
 
-```python
-# 上传文档到知识库
-with open('document.pdf', 'rb') as f:
-    files = {'file': f}
-    data = {'knowledge_base_id': 'your_kb_id'}
-    response = requests.post(
-        'http://localhost:8000/api/knowledge/upload',
-        files=files,
-        data=data,
-        headers=headers
-    )
-```
+    # 上传文档到知识库
+    with open('document.pdf', 'rb') as f:
+        files = {'file': f}
+        data = {'knowledge_base_id': 'your_kb_id'}
+        response = requests.post(
+            'http://localhost:8000/api/knowledge/upload',
+            files=files,
+            data=data,
+            headers=headers
+        )
+    
 
 ### 3. 问答
 
-```python
-# 进行问答
-response = requests.post('http://localhost:8000/api/chat/ask', json={
-    'question': '您的问题',
-    'knowledge_base_id': 'your_kb_id'
-}, headers=headers)
-
-answer = response.json()['answer']
-```
+    # 进行问答
+    response = requests.post('http://localhost:8000/api/chat/ask', json={
+        'question': '您的问题',
+        'knowledge_base_id': 'your_kb_id'
+    }, headers=headers)
+    
+    answer = response.json()['answer']
+    
 
 ## 下一步
 
